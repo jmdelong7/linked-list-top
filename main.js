@@ -10,7 +10,16 @@ class LinkedList {
     return this.first;
   }
 
-  tail() {}
+  tail() {
+    if (this.first === undefined) return {};
+
+    let currNode = this.first;
+    while (currNode.nextNode !== null) {
+      currNode = currNode.nextNode;
+    }
+
+    return currNode;
+  }
 
   size() {
     if (this.first === undefined) return 0;
@@ -24,6 +33,8 @@ class LinkedList {
 
     return counter;
   }
+
+  at(index) {}
 
   prepend(value) {
     if (Object.keys(this).length === 0) {
@@ -55,6 +66,4 @@ ll.prepend('cat');
 ll.prepend('dog');
 ll.prepend('fish');
 ll.prepend('seagull');
-console.log(ll);
-console.log(ll.first.nextNode);
-console.log(ll.size());
+console.log(ll.tail());
