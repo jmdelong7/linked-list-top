@@ -103,10 +103,27 @@ class LinkedList {
 
     return false;
   }
+
+  find(value) {
+    if (this.size() < 1) return null;
+
+    let currNode = this.first;
+    let index = 0;
+    if (currNode.value === value) return index;
+    while (currNode.nextNode !== null) {
+      currNode = currNode.nextNode;
+      index++;
+      if (currNode.value === value) return index;
+    }
+
+    return null;
+  }
+
+  toString() {}
 }
 
 const ll = new LinkedList();
 ll.append('cat');
 ll.append('dog');
 ll.append('fish');
-console.log(ll.contains('fish'));
+console.log(ll.find('fish'));
