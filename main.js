@@ -73,12 +73,35 @@ class LinkedList {
     }
     currNode.nextNode = new Node(value);
   }
+
+  pop() {
+    if (this.size() < 1) return 'empty';
+    if (this.size() === 1) {
+      delete this.first;
+      return;
+    }
+
+    let currNode = this.first;
+    let newLast = null;
+    while (currNode.nextNode !== null) {
+      newLast = currNode;
+      currNode = currNode.nextNode;
+    }
+
+    newLast.nextNode = null;
+  }
 }
 
 const ll = new LinkedList();
 ll.append('cat');
 ll.append('dog');
 ll.append('fish');
-ll.append('seagull');
 
-console.log(ll.at(5));
+console.log(ll);
+ll.pop();
+console.log(ll);
+ll.pop();
+console.log(ll);
+ll.pop();
+console.log(ll);
+ll.pop();
