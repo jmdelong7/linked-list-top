@@ -90,18 +90,23 @@ class LinkedList {
 
     newLast.nextNode = null;
   }
+
+  contains(value) {
+    if (this.size() < 1) return false;
+
+    let currNode = this.first;
+    if (currNode.value === value) return true;
+    while (currNode.nextNode !== null) {
+      currNode = currNode.nextNode;
+      if (currNode.value === value) return true;
+    }
+
+    return false;
+  }
 }
 
 const ll = new LinkedList();
 ll.append('cat');
 ll.append('dog');
 ll.append('fish');
-
-console.log(ll);
-ll.pop();
-console.log(ll);
-ll.pop();
-console.log(ll);
-ll.pop();
-console.log(ll);
-ll.pop();
+console.log(ll.contains('fish'));
