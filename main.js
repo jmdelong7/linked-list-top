@@ -14,6 +14,15 @@ class LinkedList {
 
   size() {
     if (this.first === undefined) return 0;
+
+    let counter = 1;
+    let currNode = this.first;
+    while (currNode.nextNode !== null) {
+      counter++;
+      currNode = currNode.nextNode;
+    }
+
+    return counter;
   }
 
   prepend(value) {
@@ -45,5 +54,7 @@ const ll = new LinkedList();
 ll.prepend('cat');
 ll.prepend('dog');
 ll.prepend('fish');
+ll.prepend('seagull');
 console.log(ll);
 console.log(ll.first.nextNode);
+console.log(ll.size());
