@@ -10,10 +10,25 @@ class LinkedList {
     return this.first;
   }
 
-  prepend(value) {}
+  tail() {}
+
+  size() {
+    if (this.first === undefined) return 0;
+  }
+
+  prepend(value) {
+    if (Object.keys(this).length === 0) {
+      this.first = new Node(value);
+      return;
+    }
+
+    const newFirst = new Node(value);
+    newFirst.nextNode = this.first;
+    this.first = newFirst;
+  }
 
   append(value) {
-    if (Object.getOwnPropertyNames(this).length === 0) {
+    if (Object.keys(this).length === 0) {
       this.first = new Node(value);
       return;
     }
@@ -27,8 +42,8 @@ class LinkedList {
 }
 
 const ll = new LinkedList();
-ll.append('cat');
-ll.append('dog');
-ll.append('fish');
+ll.prepend('cat');
+ll.prepend('dog');
+ll.prepend('fish');
 console.log(ll);
 console.log(ll.first.nextNode);
