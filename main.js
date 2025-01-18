@@ -119,11 +119,30 @@ class LinkedList {
     return null;
   }
 
-  toString() {}
+  toString() {
+    if (this.size() < 1) return 'empty';
+    if (this.size() === 1) return `( ${this.first.value} ) -> `;
+
+    let string = '';
+    let currNode = this.first;
+    while (currNode.nextNode !== null) {
+      string = string + `( ${currNode.value} ) -> `;
+      currNode = currNode.nextNode;
+      if (currNode.nextNode === null) {
+        string = string + `( ${currNode.value} ) -> `;
+      }
+    }
+
+    return string + 'null';
+  }
 }
 
-const ll = new LinkedList();
-ll.append('cat');
-ll.append('dog');
-ll.append('fish');
-console.log(ll.find('fish'));
+const list = new LinkedList();
+
+list.append('dog');
+list.append('cat');
+list.append('parrot');
+list.append('hamster');
+list.append('snake');
+list.append('turtle');
+console.log(list.toString());
