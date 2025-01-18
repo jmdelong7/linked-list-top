@@ -34,7 +34,21 @@ class LinkedList {
     return counter;
   }
 
-  at(index) {}
+  at(index) {
+    const size = this.size();
+    if (size === 0) return 'empty';
+    if (index > size - 1) return 'index out of range';
+    if (index === 0) return this.first;
+
+    let counter = 0;
+    let currNode = this.first;
+    while (counter !== index) {
+      counter++;
+      currNode = currNode.nextNode;
+    }
+
+    return currNode;
+  }
 
   prepend(value) {
     if (Object.keys(this).length === 0) {
@@ -62,8 +76,9 @@ class LinkedList {
 }
 
 const ll = new LinkedList();
-ll.prepend('cat');
-ll.prepend('dog');
-ll.prepend('fish');
-ll.prepend('seagull');
-console.log(ll.tail());
+ll.append('cat');
+ll.append('dog');
+ll.append('fish');
+ll.append('seagull');
+
+console.log(ll.at(5));
